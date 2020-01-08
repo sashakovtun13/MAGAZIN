@@ -16,8 +16,10 @@
 .good-out{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    
+    justify-content:center;
     border: 2px solid black;
+    
 }
 .good-out::after{
 	content:"";
