@@ -1,0 +1,26 @@
+{
+    "0001":{
+        "name":"Яблоко",
+        "cost":"01",
+        "desc":"Описание Яблоко",
+        "good_img":"base_img/apple.png"
+    },
+    "0002":{
+        "name":"Баклажан",
+        "cost":"02",
+        "desc":"Описание Баклажан",
+        "good_img":"base_img/aubergine.png"
+    },
+    "0003":{
+        "name":"Сыр",
+        "cost":"03",
+        "desc":"Описание Сыр",
+        "good_img":"base_img/cheese.png"
+    },
+    "0004":{
+        "name":"Пиво",
+        "cost":"04",
+        "desc":"Описание Пиво",
+        "good_img":"base_img/pint.png"
+    }
+}

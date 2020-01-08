@@ -1,0 +1,26 @@
+.cart{
+
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    float: left;
+    border: 1px solid black;
+    padding: 20px;
+    margin: 20px;
+
+    
+}
+.cart .good_img{
+    width: 100px;
+}
+.good-out{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid black;
+}
+.good-out::after{
+	content:"";
+	display:block;
+    clear: both;
+}
