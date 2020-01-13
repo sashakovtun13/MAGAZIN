@@ -13,6 +13,13 @@
 .cart .good_img{
     width: 100px;
 }
+.cart .add-to-carz:hover{
+    background: greenyellow;
+}
+.cart .add-to-carz:active{
+    background: red;
+}
+
 .good-out{
     display: flex;
     flex-wrap: wrap;
@@ -25,4 +32,19 @@
 	content:"";
 	display:block;
     clear: both;
+}
+.m-carz{
+    background: red;
+    color: white;
+    padding: 5px;
+    font-size: 10px;
+
+}
+/* Карзина */
+.good_img_carz{
+    width: 48px;
+    height: 48px;
+}
+.name_carz{
+    font-size: 15px;
 }
