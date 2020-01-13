@@ -46,7 +46,7 @@ var baseIn={};//Масив базы
       else{
         carz[id]++;
       }
-      
+      $(".m-carz").css("display", "block");
       showCarz();
       saveCarz();
       
@@ -60,7 +60,15 @@ var baseIn={};//Масив базы
         out+=count++;
       }
       var out=count;
-      $(".m-carz").html(out);
+      if(count<1){
+        $(".m-carz").css("display", "none");
+        
+      }
+      else{
+        $(".m-carz").css("display", "inline");
+        $(".m-carz").html(out);
+      }
+     
     }
     //Функция сохранения корзины в LocalStorage
     function saveCarz(){
