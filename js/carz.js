@@ -19,15 +19,24 @@ function loadCarz(){
               var goods=data;
               var out="";
               for(id in carz){
-                ;
+                //Кнопки +-
+                out+='     <button data-id="'+id+'" class="plus_good_carz">+</button>';
+                out+=' '+carz[id]+' ';
+                out+='     <button data-id="'+id+'" class="minus_good_carz">-</button>';
                 out+='<img src="base/'+goods[id].good_img+'" alt="" class="good_img_carz">';
-                out+='<span class="name_carz">'+goods[id].name+' ---> '+carz[id]+'</span>';
                 //количество
-                out+='     <button data-id="'+id+'" class="del_good_carz">x</button><br>'
+                out+='<span class="name_carz">'+goods[id].name+'</span>';
+                //Кнопка удалить
+                out+='     <button data-id="'+id+'" class="del_good_carz">x</button>';
+                //Цена
+                out+='--->'+carz[id]*goods[id].cost+'';
+                out+='<br>'
               }
 
             $(".carz").html(out);
             $(".del_good_carz").on("click",delGood);
+            $(".plus_good_carz").on("click",plusGood);
+            $(".minus_good_carz").on("click",minusGood);
         });
     }
 }
@@ -37,6 +46,26 @@ function delGood(){
     delete carz[id];
     saveCarz();
     showCarz();
+}
+//Событие кнопки ПЛЮС
+function plusGood(){
+  var id=$(this).attr("data-id");
+  carz[id]++;
+  saveCarz();
+  showCarz();
+}
+//Событие кнопки МИНУС
+function minusGood(){
+  var id=$(this).attr("data-id");
+  if(carz[id]==1){
+    delete carz[id];
+  }
+  else{
+    carz[id]--;
+  }
+  
+  saveCarz();
+  showCarz();
 }
 //----> Функция сохранения корзины в LocalStorage
     function saveCarz(){
@@ -48,7 +77,41 @@ function isEmpty(obj){
         if(obj.hasOwnProperty(key)) return true;
         return false;
     }
+}
+
+//Отправка в php
+function sendEmail() {
+  var ename = $('#ename').val();
+  var email = $('#email').val();
+  var ephone = $('#ephone').val();
+
+  if (ename!='' && email!='' && ephone!='') {
+      if (isEmpty(carz)) {
+          $.post(
+              "core/mail.php",
+              {
+                  "ename" : ename,
+                  "email" : email,
+                  "ephone" : ephone,
+                  "carz" : carz
+              },
+              function(data){
+                  console.log(dat);
+              }
+          );
+      }
+      else {
+          $(".error").html("Корзина пуста");
+      }
+  }
+  else {
+    $(".error").html("Заполните поля");
+     
+  }
+
 } 
 $(function(){
     loadCarz();
+    $('.send-email').on('click', sendEmail); // отправить письмо с заказом
 });
+
