@@ -96,7 +96,7 @@ function sendEmail() {
                   "carz" : carz
               },
               function(data){
-                  console.log(dat);
+                  console.log(data);
               }
           );
       }
