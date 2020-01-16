@@ -85,29 +85,16 @@ function sendEmail() {
   var email = $('#email').val();
   var ephone = $('#ephone').val();
 
-  if (ename!='' && email!='' && ephone!='') {
-      if (isEmpty(carz)) {
-          $.post(
-              "core/mail.php",
-              {
-                  "ename" : ename,
-                  "email" : email,
-                  "ephone" : ephone,
-                  "carz" : carz
-              },
-              function(data){
-                  console.log(data);
-              }
-          );
-      }
-      else {
-          $(".error").html("Корзина пуста");
-      }
-  }
-  else {
-    $(".error").html("Заполните поля");
-     
-  }
+  alert(carz);
+  $.ajax({
+    type: "POST",
+    url: "core/mail.php",
+    data: carz,
+    dataType: "dataType",
+    success: function (response) {
+      alert(data);
+    }
+  });
 
 } 
 $(function(){
